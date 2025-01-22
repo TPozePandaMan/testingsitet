@@ -4,22 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Camera App with Video and Photo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 20px;
+      background-color: #f3f4f6;
+      color: #333;
+    }
+    h1 {
+      margin-bottom: 20px;
     }
     video, canvas {
       width: 100%;
       max-width: 640px;
       margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     button {
       padding: 10px 20px;
       font-size: 16px;
       margin: 5px;
       cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    a {
+      display: inline-block;
+      margin: 10px 5px;
+      text-decoration: none;
+      color: white;
+      background-color: #28a745;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    a:hover {
+      background-color: #1e7e34;
+    }
+    a:disabled {
+      background-color: #ccc;
+      pointer-events: none;
+    }
+    .material-icons {
+      font-size: 18px;
     }
   </style>
 </head>
@@ -27,10 +76,21 @@
   <h1>Camera App with Video and Photo</h1>
   <video id="video" autoplay playsinline></video>
   <canvas id="canvas" style="display: none;"></canvas>
+  <div class="button-container">
+    <button id="start">
+      <span class="material-icons">videocam</span>
+      Start Recording
+    </button>
+    <button id="stop" disabled>
+      <span class="material-icons">stop</span>
+      Stop Recording
+    </button>
+    <button id="take-photo">
+      <span class="material-icons">camera_alt</span>
+      Take Photo
+    </button>
+  </div>
   <div>
-    <button id="start">Start Recording</button>
-    <button id="stop" disabled>Stop Recording</button>
-    <button id="take-photo">Take Photo</button>
     <a id="download" style="display: none;">Download Video</a>
     <a id="photo-link" style="display: none;">Download Photo</a>
   </div>
